@@ -1,11 +1,30 @@
 {
   "pages": [
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/design/design"
   ],
   "window": {
+    "navigationBarTitleText": "测试标题",
     "navigationBarTextStyle": "black",
-    "navigationStyle": "custom"
+    "navigationBarBackgroundColor": "#FFB5C5"
+  },
+  "tabBar": {
+    "selectedColor": "#1296db",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "/images/shouye.png",
+        "selectedIconPath": "/images/shouye-copy.png"
+      },
+      {
+        "pagePath": "pages/design/design",
+        "text": "设计",
+        "iconPath": "/images/caozuo.png",
+        "selectedIconPath": "/images/caozuo-copy.png"
+      }
+    ]
   },
   "style": "v2",
   "rendererOptions": {

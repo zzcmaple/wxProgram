@@ -1,0 +1,4 @@
+<!--pages/design/design.wxml-->
+<view class="design_container">
+  <view class="design_canvas"></view>
+</view>

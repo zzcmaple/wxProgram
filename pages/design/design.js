@@ -1,4 +1,4 @@
-// pages/index.js
+// pages/design/design.js
 Page({
 
   /**
