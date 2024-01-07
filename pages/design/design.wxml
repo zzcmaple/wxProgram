@@ -7,13 +7,12 @@
         <view>
           <text>电影名</text>
         </view>
-        
         <text>地方</text>
         <text>时间</text>
       </view>
     </view>
     <view class="design_anction">
-      <button type="primary">编辑票根</button>
+      <button type="primary" bind:tap="getTime">编辑票根</button>
       <button type="warn">下载票根</button>
     </view>
   </view>

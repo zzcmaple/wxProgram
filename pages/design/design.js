@@ -1,4 +1,5 @@
 // pages/design/design.js
+import { request } from '../../utils/request'
 Page({
 
   /**
@@ -7,7 +8,11 @@ Page({
   data: {
 
   },
-
+  async getTime () {
+    console.log(111)
+    const res = await request('/order/hello', 'get', {})
+    console.log(res)
+  },
   /**
    * 生命周期函数--监听页面加载
    */
