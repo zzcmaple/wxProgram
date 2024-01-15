@@ -7,7 +7,7 @@
       label="电影海报"
     >
       <div slot="input">
-        <van-uploader bind:after-read="uploadToCloud" multiple file-list="{{ formData.fileList }}" />
+        <van-uploader image-fit="aspectFill" bind:after-read="uploadToCloud" multiple file-list="{{ formData.fileList }}" />
       </div>
     </van-field> 
     <van-field

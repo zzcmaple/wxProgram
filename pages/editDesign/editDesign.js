@@ -44,10 +44,10 @@ Page({
       const uploadTasks = file.map((file, index) => this.uploadFilePromise(`my-photo${index}.png`, file));
       try {
         const res = await Promise.all(uploadTasks);
-        console.log(res)
         wx.showToast({ title: '上传成功', icon: 'none' });
         const newFileList = res.map(item => ({ url: item.fileID }));
         this.setData({"formData.fileList": newFileList });
+        console.log(this.data.formData.fileList)
       } catch(error) {
         wx.showToast({ title: '上传失败', icon: 'none' });
         console.log(error);
