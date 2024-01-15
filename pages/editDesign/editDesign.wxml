@@ -1,0 +1,60 @@
+<!--pages/editDesign/editDesign.wxml-->
+<view class="container">
+  <van-cell-group>
+    <van-field
+      center
+      custom-class="upload_btn"
+      label="电影海报"
+    >
+      <div slot="input">
+        <van-uploader bind:after-read="uploadToCloud" multiple file-list="{{ formData.fileList }}" />
+      </div>
+    </van-field> 
+    <van-field
+      model:value="{{ formData.movieName }}"
+      label="电影名"
+    />
+    <van-field
+      model:value="{{ formData.subMovieName }}"
+      label="电影副标题"
+      placeholder="没有可以不填"
+    />
+    <van-field
+      model:value="{{ formData.cinemaName }}"
+      label="影院名称"
+      placeholder="观影的影院名称"
+    />
+    <van-field
+      model:value="{{ formData.memberCount }}"
+      label="观影人数"
+      type="number"
+    />
+    <van-field
+      model:value="{{ formData.playRoom }}"
+      label="播放厅"
+      placeholder="例：3号厅"
+      type="number"
+    />
+    <van-field
+      model:value="{{ formData.seat }}"
+      label="座位"
+      placeholder="例：7排5座"
+    />
+    <van-cell title-class="field_lable_color" value-class="field_text_color" title="观影时间" value="{{ formData.playDate }}" bind:click="showDatePopup" clickable="{{true}}"></van-cell>
+    <van-field
+      model:value="{{ formData.remark }}"
+      label="备注"
+      autosize
+      type="textarea"
+    />
+    <van-popup show="{{ datePopupShow }}" position="bottom">
+      <van-datetime-picker
+        type="datetime"
+        value="{{ currentDate }}"
+        bind:confirm="confirmDate"
+        bind:cancel="closeDatePopup"
+      />
+    </van-popup>
+    
+  </van-cell-group>
+</view>

@@ -2,7 +2,9 @@
 <view class="design_container">
   <view class="design_center">
     <view class="design_canvas">
-      <image class="design_img" src="../../images/微信图片_20240106151216.png" mode=""/>
+      <view class="design_img">
+        <image src="../../images/test.jpg" mode=""/>
+      </view>
       <view class="design_info">
         <view>
           <text>电影名</text>
@@ -12,7 +14,7 @@
       </view>
     </view>
     <view class="design_anction">
-      <button type="primary" bind:tap="getTime">编辑票根</button>
+      <button type="primary" bind:tap="toEdit">编辑票根</button>
       <button type="warn">下载票根</button>
     </view>
   </view>

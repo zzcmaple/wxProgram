@@ -2,10 +2,11 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/design/design"
+    "pages/design/design",
+    "pages/editDesign/editDesign"
   ],
   "window": {
-    "navigationBarTitleText": "测试标题",
+    "navigationBarTitleText": "票根DIV",
     "navigationBarTextStyle": "black",
     "navigationBarBackgroundColor": "#FFB5C5"
   },
@@ -26,10 +27,9 @@
       }
     ]
   },
-  "style": "v2",
   "rendererOptions": {
     "skyline": {
-      "defaultDisplayBlock": true,
+      "defaultDisplayBlock": false,
       "disableABTest": true,
       "sdkVersionBegin": "3.0.0",
       "sdkVersionEnd": "15.255.255"

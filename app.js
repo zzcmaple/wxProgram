@@ -1,9 +1,10 @@
 // app.js
+
 App({
   globalData: {
     baseTextColor: "#303030",
     baseSelectTextColor: "	#B452CD",
-    baseBgColor: "#FFAEB9",
+    baseBgColor: "#FFAEB9"
   },
   onLaunch() {
     // 展示本地存储能力

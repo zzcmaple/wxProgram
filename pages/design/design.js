@@ -8,10 +8,10 @@ Page({
   data: {
 
   },
-  async getTime () {
-    console.log(111)
-    const res = await request('/order/hello', 'get', {})
-    console.log(res)
+  toEdit () {
+    wx.navigateTo({
+      url: '../editDesign/editDesign',
+    })
   },
   /**
    * 生命周期函数--监听页面加载

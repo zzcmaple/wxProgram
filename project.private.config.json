@@ -8,8 +8,8 @@
     "miniprogram": {
       "list": [
         {
-          "name": "",
-          "pathName": "pages/design/design",
+          "name": "pages/editDesign/editDesign",
+          "pathName": "pages/editDesign/editDesign",
           "query": "",
           "launchMode": "default",
           "scene": null
