@@ -8,6 +8,13 @@
     "miniprogram": {
       "list": [
         {
+          "name": "pages/design/design",
+          "pathName": "pages/design/design",
+          "query": "",
+          "launchMode": "default",
+          "scene": null
+        },
+        {
           "name": "pages/editDesign/editDesign",
           "pathName": "pages/editDesign/editDesign",
           "query": "",
@@ -16,5 +23,6 @@
         }
       ]
     }
-  }
+  },
+  "libVersion": "development"
 }

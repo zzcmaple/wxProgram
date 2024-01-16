@@ -1,21 +1,20 @@
 <!--pages/design/design.wxml-->
-<view class="design_container">
+<view class="design_container" style="--width:{{width + 'rpx'}}">
   <view class="design_center">
     <view class="design_canvas">
       <view class="design_img">
-        <image src="../../images/test.jpg" mode=""/>
+        <image src="{{ movieInfo.fileList.length ? movieInfo.fileList[0].url : '../../images/default.jpg' }}" mode=""/>
       </view>
       <view class="design_info">
-        <view>
-          <text>电影名</text>
+        <view class="design_info_title">
+        {{ movieInfo.movieName }}
         </view>
-        <text>地方</text>
-        <text>时间</text>
+        <view class="design_info_container"></view>
       </view>
     </view>
-    <view class="design_anction">
+  </view>
+  <view class="design_anction">
       <button type="primary" bind:tap="toEdit">编辑票根</button>
       <button type="warn">下载票根</button>
     </view>
-  </view>
 </view>

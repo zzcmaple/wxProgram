@@ -5,17 +5,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    formData: {
-      movieName: "",
-      subMovieName: "",
-      cinemaName: "",
-      memberCount: "",
-      playRoom: "",
-      seat: "",
-      playDate: "",
-      remark: "",
-      fileList: []
-    },
+    movieName: "",
+    subMovieName: "",
+    cinemaName: "",
+    memberCount: "",
+    playRoom: "",
+    seat: "",
+    playDate: "",
+    remark: "",
+    fileList: [],
     currentDate: new Date().getTime(),
     datePopupShow: false
   },
@@ -31,7 +29,7 @@ Page({
   },
   confirmDate (e) {
     this.setData({
-      "formData.playDate": moment(e.detail).format('YYYY-MM-DD HH:mm:ss')
+      playDate: moment(e.detail).format('YYYY-MM-DD HH:mm:ss')
     })
     this.closeDatePopup();
   },
@@ -41,13 +39,15 @@ Page({
     if (!file.length) {
       wx.showToast({ title: '请选择图片', icon: 'none' });
     } else {
-      const uploadTasks = file.map((file, index) => this.uploadFilePromise(`my-photo${index}.png`, file));
+      const uploadTasks = file.map((fileItem, index) => this.uploadFilePromise(`my-photo${index}.png`, fileItem));
       try {
         const res = await Promise.all(uploadTasks);
+        console.log(res)
         wx.showToast({ title: '上传成功', icon: 'none' });
         const newFileList = res.map(item => ({ url: item.fileID }));
-        this.setData({"formData.fileList": newFileList });
-        console.log(this.data.formData.fileList)
+        const fileList = [...this.data.fileList, ...newFileList]
+        console.log(fileList)
+        this.setData({fileList: fileList });
       } catch(error) {
         wx.showToast({ title: '上传失败', icon: 'none' });
         console.log(error);
@@ -59,6 +59,34 @@ Page({
       cloudPath: fileName,
       filePath: chooseResult.url
     });
+  },
+  saveMovieInfo () {
+    const movieInfo = getApp().globalData.movieInfo
+    for (const key in movieInfo) {
+      movieInfo[key] = this.data[key]
+    }
+    getApp().globalData.movieInfo = movieInfo
+    console.log(this.data)
+    wx.switchTab({
+      url: '/pages/design/design',
+      success () {
+        const page = getCurrentPages().pop();
+        if (page == undefined || page == null) return;
+        page.onLoad();
+      }
+    })
+  },
+  onChange (e) {
+    console.log(e)
+    this.setData({
+      [e.currentTarget.dataset.name]: e.detail
+    })
+  },
+  deleteImage (e) {
+    const fileList = this.data.fileList.filter((item, index) => index !== e.detail.index)
+    this.setData({
+      fileList
+    })
   },
   /**
    * 生命周期函数--监听页面加载

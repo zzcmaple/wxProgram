@@ -4,8 +4,7 @@
   align-items: center;
   align-content: center;
   flex-direction: column;
-  height: 100vh;
-  padding: 30rpx 0;
+  padding-top: 30rpx;
   background-color: rgba(0, 0, 0, 0.1);
   font-size: 22rpx;
   --width: 550rpx;
@@ -13,19 +12,19 @@
 
 .design_center {
   width: var(--width);
-  height: 100%;
+  height: calc(var(--width) * 2.2);
 }
 
 .design_canvas {
-  height: 90%;
-  background-color: skyblue;
+  height: 100%;
 }
 
 .design_img {
   width: 100%;
-  height: calc(var(--width) * 1.2);
+  height: calc(var(--width) * 1.3);
   overflow: hidden;
 }
+
 .design_img image {
   display: block;
   width: 100%;
@@ -34,8 +33,9 @@
 }
 
 .design_anction {
+  width: var(--width);
   display: flex;
-  padding-top: 20rpx;
+  margin-top: 10rpx;
 }
 
 .design_anction button {
@@ -46,19 +46,39 @@
 
 .design_info {
   position: relative;
-  padding: 8rpx 0;
-  display: flex;
-  justify-content: space-between;
+  height: calc(100% - var(--width) * 1.3);
+  padding: 20rpx 20rpx;
+  background-image: linear-gradient(to bottom,#542624 0%, #8a6c6c 50%, #cbbdbd 100%);
 }
-
-.design_info::after {
-  position: absolute;
-  bottom: 0;
-  left: 0;
+.design_info_title {
+  position: relative;
+  top: 0;
   width: 100%;
-  height: 1px;
-  background-image: linear-gradient(to right, red 0%, red 50%, transparent 50%);
-  background-size: 8px 1px;
-  background-repeat: repeat-x;
+  height: 200rpx;
+  background-color: #411c1b;
+}
+.design_info_container {
+  width: 100%;
+  height: calc(100% - 100rpx);
+  position: relative;
+  top: -100rpx;
+  background:
+    radial-gradient(circle at top, transparent 20px, #FFFFFF 10px) top,
+    radial-gradient(circle at left 70%, transparent 10px, #FFFFFF 10px) left,
+    radial-gradient(circle at right 70%, transparent 10px, #FFFFFF 10px) right,
+    radial-gradient(circle at bottom, #FFFFFF 10px, #FFFFFF 10px) bottom;
+  background-repeat: no-repeat;
+  background-size: 100% 50%, 50% 50%, 50% 50%, 100% 30%;
+  border-radius: 10px;
+}
+.design_info_container::after {
   content: '';
+  position: absolute;
+  top: 60%;
+  left: 10px;
+  width: calc(100% - 20px);
+  height: 2px;
+  background-image: linear-gradient(to right, #999999 0%, #999999 50%, transparent 50%);
+  background-size: 11px 2px;
+  background-repeat: repeat-x;
 }

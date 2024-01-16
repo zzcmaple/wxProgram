@@ -4,7 +4,18 @@ App({
   globalData: {
     baseTextColor: "#303030",
     baseSelectTextColor: "	#B452CD",
-    baseBgColor: "#FFAEB9"
+    baseBgColor: "#FFAEB9",
+    movieInfo: {
+      movieName: wx.getAppBaseInfo().SDKVersion,
+      subMovieName: "",
+      cinemaName: "",
+      memberCount: "",
+      playRoom: "",
+      seat: "",
+      playDate: "",
+      remark: "",
+      fileList: []
+    }
   },
   onLaunch() {
     // 展示本地存储能力
@@ -18,8 +29,5 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
       }
     })
-  },
-  globalData: {
-    userInfo: null
   }
 })

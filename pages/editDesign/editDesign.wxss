@@ -1,6 +1,6 @@
 /* pages/editDesign/editDesign.wxss */
 .container {
-  background-color: #999999;
+  background-color: #ffffff;
   height: 100vh;
 }
 .field_lable_color {
@@ -10,10 +10,22 @@
   color: #323233 !important;
 }
 .upload_btn {
-  width: 200rpx;
-  height: 200rpx;
-  background-color: red;
+  min-height: 360rpx;
 }
 .upload_btn .van-field__body {
-  height: 200rpx;
+  min-height: 360rpx;
+}
+.upload_btn .van-cell__value {
+  min-height: 360rpx;
+}
+.upload_btn .van-field__control--custom {
+  display: inline-block;
+  min-height: 360rpx !important;
+}
+.upload_btn .van-cell__value {
+  overflow: auto;
+}
+.van-uploader__upload, .van-uploader__preview-image {
+  width: 200rpx !important;
+  height: 360rpx !important;
 }

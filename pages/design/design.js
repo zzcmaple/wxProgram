@@ -6,7 +6,18 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    width: 550,
+    movieInfo: {
+      movieName: "",
+      subMovieName: "",
+      cinemaName: "",
+      memberCount: "",
+      playRoom: "",
+      seat: "",
+      playDate: "",
+      remark: "",
+      fileList: []
+    },
   },
   toEdit () {
     wx.navigateTo({
@@ -17,7 +28,11 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-
+    if (getApp().globalData.movieInfo) {
+      this.setData({
+        movieInfo: getApp().globalData.movieInfo
+      })
+    }
   },
 
   /**
@@ -31,7 +46,6 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow() {
-
   },
 
   /**

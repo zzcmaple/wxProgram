@@ -25,7 +25,7 @@
       "disablePlugins": [],
       "outputPath": ""
     },
-    "condition": false
+    "condition": true
   },
   "condition": {},
   "editorSetting": {

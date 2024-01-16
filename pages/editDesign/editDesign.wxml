@@ -2,51 +2,62 @@
 <view class="container">
   <van-cell-group>
     <van-field
+      model:value="{{ movieName }}"
+      label="电影名"
+      placeholder="请输入电影名称"
+      data-name="movieName"
+      bind:input="onChange"
+    />
+    <van-field
+      model:value="{{ subMovieName }}"
+      label="电影副标题"
+      data-name="subMovieName"
+      placeholder="没有可以不填"
+    />
+    <van-field
+      model:value="{{ cinemaName }}"
+      label="影院名称"
+      placeholder="观影的影院名称"
+      data-name="cinemaName"
+    />
+    <van-field
+      model:value="{{ memberCount }}"
+      label="观影人数"
+      type="number"
+      placeholder="请输入观影人数"
+      data-name="memberCount"
+    />
+    <van-field
+      model:value="{{ playRoom }}"
+      label="播放厅"
+      placeholder="例：3号厅"
+      type="number"
+      data-name="playRoom"
+    />
+    <van-field
+      model:value="{{ seat }}"
+      label="座位"
+      placeholder="例：7排5座"
+      data-name="seat"
+    />
+    <van-cell title-class="field_lable_color" value-class="field_text_color" title="观影时间" value="{{ playDate }}" bind:click="showDatePopup" clickable="{{true}}"></van-cell>
+    <van-field
+      model:value="{{ remark }}"
+      label="备注"
+      autosize
+      type="textarea"
+      data-name="remark"
+    />
+
+    <van-field
       center
       custom-class="upload_btn"
       label="电影海报"
     >
       <div slot="input">
-        <van-uploader image-fit="aspectFill" bind:after-read="uploadToCloud" multiple file-list="{{ formData.fileList }}" />
+        <van-uploader image-fit="aspectFill" bind:after-read="uploadToCloud" multiple file-list="{{ fileList }}" bind:delete="deleteImage" />
       </div>
     </van-field> 
-    <van-field
-      model:value="{{ formData.movieName }}"
-      label="电影名"
-    />
-    <van-field
-      model:value="{{ formData.subMovieName }}"
-      label="电影副标题"
-      placeholder="没有可以不填"
-    />
-    <van-field
-      model:value="{{ formData.cinemaName }}"
-      label="影院名称"
-      placeholder="观影的影院名称"
-    />
-    <van-field
-      model:value="{{ formData.memberCount }}"
-      label="观影人数"
-      type="number"
-    />
-    <van-field
-      model:value="{{ formData.playRoom }}"
-      label="播放厅"
-      placeholder="例：3号厅"
-      type="number"
-    />
-    <van-field
-      model:value="{{ formData.seat }}"
-      label="座位"
-      placeholder="例：7排5座"
-    />
-    <van-cell title-class="field_lable_color" value-class="field_text_color" title="观影时间" value="{{ formData.playDate }}" bind:click="showDatePopup" clickable="{{true}}"></van-cell>
-    <van-field
-      model:value="{{ formData.remark }}"
-      label="备注"
-      autosize
-      type="textarea"
-    />
     <van-popup show="{{ datePopupShow }}" position="bottom">
       <van-datetime-picker
         type="datetime"
@@ -57,4 +68,5 @@
     </van-popup>
     
   </van-cell-group>
+  <button bind:tap="saveMovieInfo">保存</button>
 </view>
