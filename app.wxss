@@ -2,3 +2,35 @@
 view, text {
   box-sizing: border-box;
 }
+
+.font_weight_700 {
+  font-weight: 700;
+}
+
+.font_size_32 {
+  font-size: 32rpx;
+}
+
+.font_size_23 {
+  font-size: 23rpx;
+}
+
+.font_size_25 {
+  font-size: 25rpx;
+}
+
+.margin_right_10 {
+  margin-right: 10rpx;
+}
+
+.margin_bottom_10 {
+  margin-bottom: 10rpx;
+}
+
+.margin_bottom_20 {
+  margin-bottom: 20rpx;
+}
+
+.color_999 {
+  color: #999999
+}

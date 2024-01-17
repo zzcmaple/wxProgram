@@ -13,12 +13,14 @@
       label="电影副标题"
       data-name="subMovieName"
       placeholder="没有可以不填"
+      bind:input="onChange"
     />
     <van-field
       model:value="{{ cinemaName }}"
       label="影院名称"
       placeholder="观影的影院名称"
       data-name="cinemaName"
+      bind:input="onChange"
     />
     <van-field
       model:value="{{ memberCount }}"
@@ -26,6 +28,7 @@
       type="number"
       placeholder="请输入观影人数"
       data-name="memberCount"
+      bind:input="onChange"
     />
     <van-field
       model:value="{{ playRoom }}"
@@ -33,12 +36,14 @@
       placeholder="例：3号厅"
       type="number"
       data-name="playRoom"
+      bind:input="onChange"
     />
     <van-field
       model:value="{{ seat }}"
       label="座位"
       placeholder="例：7排5座"
       data-name="seat"
+      bind:input="onChange"
     />
     <van-cell title-class="field_lable_color" value-class="field_text_color" title="观影时间" value="{{ playDate }}" bind:click="showDatePopup" clickable="{{true}}"></van-cell>
     <van-field
@@ -47,6 +52,7 @@
       autosize
       type="textarea"
       data-name="remark"
+      bind:input="onChange"
     />
 
     <van-field

@@ -12,11 +12,10 @@
 
 .design_center {
   width: var(--width);
-  height: calc(var(--width) * 2.2);
 }
 
 .design_canvas {
-  height: 100%;
+  
 }
 
 .design_img {
@@ -46,7 +45,6 @@
 
 .design_info {
   position: relative;
-  height: calc(100% - var(--width) * 1.3);
   padding: 20rpx 20rpx;
   background-image: linear-gradient(to bottom,#542624 0%, #8a6c6c 50%, #cbbdbd 100%);
 }
@@ -54,16 +52,18 @@
   position: relative;
   top: 0;
   width: 100%;
-  height: 200rpx;
+  min-height: 100rpx;
   background-color: #411c1b;
 }
 .design_info_container {
+  padding: 40rpx 25rpx 20rpx;
   width: 100%;
-  height: calc(100% - 100rpx);
+  min-height: calc(var(--width) * 0.75);
   position: relative;
-  top: -100rpx;
+  top: -25rpx;
+  font-size: 25rpx;
   background:
-    radial-gradient(circle at top, transparent 20px, #FFFFFF 10px) top,
+    radial-gradient(ellipse at top, transparent 16px, #FFFFFF 10px) top,
     radial-gradient(circle at left 70%, transparent 10px, #FFFFFF 10px) left,
     radial-gradient(circle at right 70%, transparent 10px, #FFFFFF 10px) right,
     radial-gradient(circle at bottom, #FFFFFF 10px, #FFFFFF 10px) bottom;
@@ -81,4 +81,22 @@
   background-image: linear-gradient(to right, #999999 0%, #999999 50%, transparent 50%);
   background-size: 11px 2px;
   background-repeat: repeat-x;
+}
+
+.design_info_title {
+  padding: 20rpx 20rpx 30rpx;
+  color: #b1a09d;
+}
+.movie_info_bottom {
+  position: absolute;
+  top: 70%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.text_center {
+  text-align: center;
 }

@@ -39,7 +39,7 @@ Page({
     if (!file.length) {
       wx.showToast({ title: '请选择图片', icon: 'none' });
     } else {
-      const uploadTasks = file.map((fileItem, index) => this.uploadFilePromise(`my-photo${index}.png`, fileItem));
+      const uploadTasks = file.map((fileItem, index) => this.uploadFilePromise(`my-photo${new Date().getTime() + index}.png`, fileItem));
       try {
         const res = await Promise.all(uploadTasks);
         console.log(res)
@@ -92,7 +92,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    
+    console.log(options)
   },
 
   /**

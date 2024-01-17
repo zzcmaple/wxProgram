@@ -1,5 +1,6 @@
 // pages/design/design.js
 import { request } from '../../utils/request'
+import moment from 'moment'
 Page({
 
   /**
@@ -18,10 +19,11 @@ Page({
       remark: "",
       fileList: []
     },
+    viewingDate: ""
   },
   toEdit () {
     wx.navigateTo({
-      url: '../editDesign/editDesign',
+      url: '../editDesign/editDesign?movieInfo=${this.data.movieInfo}',
     })
   },
   /**
@@ -30,7 +32,8 @@ Page({
   onLoad(options) {
     if (getApp().globalData.movieInfo) {
       this.setData({
-        movieInfo: getApp().globalData.movieInfo
+        movieInfo: getApp().globalData.movieInfo,
+        viewingDate:  getApp().globalData.movieInfo.playDate ? moment(getApp().globalData.movieInfo.playDate).format('YYYY/MM/DD') : ""
       })
     }
   },

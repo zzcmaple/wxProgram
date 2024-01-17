@@ -7,9 +7,32 @@
       </view>
       <view class="design_info">
         <view class="design_info_title">
-        {{ movieInfo.movieName }}
+          {{ movieInfo.cinemaName }}
         </view>
-        <view class="design_info_container"></view>
+        <view class="design_info_container">
+          <view class="movie_info_top">
+            <view class="font_weight_700 font_size_32 margin_bottom_10">{{ movieInfo.movieName }}</view>
+            <view class="margin_bottom_20">
+              <text class="margin_right_10">{{ movieInfo.subMovieName }}</text>
+              <text>{{ movieInfo.memberCount }}{{ movieInfo.memberCount !== "" ? '张' : "" }}</text>
+            </view>
+            <view class="margin_bottom_10 font_size_23 color_999">
+              {{ movieInfo.playDate }}
+            </view>
+            <view class="font_size_25">
+              <text class="margin_right_10">{{ movieInfo.playRoom }}{{ movieInfo.playRoom !== "" ? '号厅' : "" }}</text>
+              <text>{{ movieInfo.seat }}</text>
+            </view>
+          </view>
+          <view class="movie_info_bottom">
+            <view class="font_weight_700 font_size_32 margin_bottom_20">
+              THANK YOU FOR WATCHING
+            </view>
+            <view class="font_weight_700">
+              {{ viewingDate }} {{ viewingDate ? "观影留念" : "" }}
+            </view>
+          </view>
+        </view>
       </view>
     </view>
   </view>
