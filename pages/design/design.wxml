@@ -1,34 +1,34 @@
 <!--pages/design/design.wxml-->
-<view class="design_container" style="--width:{{width + 'rpx'}}">
+<view class="design_container">
   <view class="design_center">
-    <view class="design_canvas">
-      <view class="design_img">
-        <image src="{{ movieInfo.fileList.length ? movieInfo.fileList[0].url : '../../images/default.jpg' }}" mode=""/>
+    <view class="design_canvas draw_class">
+      <view class="design_img draw_class">
+        <image data-type="image" data-mode="aspectFill" data-url="{{ movieInfo.fileList.length ? movieInfo.fileList[0].url : '/images/default.jpg' }}" class="draw_class" src="{{ movieInfo.fileList.length ? movieInfo.fileList[0].url : '/images/default.jpg' }}" mode='aspectFill'/>
       </view>
-      <view class="design_info">
-        <view class="design_info_title">
+      <view class="design_info draw_class">
+        <view data-type="text" data-text="{{ movieInfo.cinemaName }}" class="design_info_title draw_class">
           {{ movieInfo.cinemaName }}
         </view>
-        <view class="design_info_container">
-          <view class="movie_info_top">
-            <view class="font_weight_700 font_size_32 margin_bottom_10">{{ movieInfo.movieName }}</view>
-            <view class="margin_bottom_20">
-              <text class="margin_right_10">{{ movieInfo.subMovieName }}</text>
-              <text>{{ movieInfo.memberCount }}{{ movieInfo.memberCount !== "" ? '张' : "" }}</text>
+        <view class="design_info_container draw_class">
+          <view class="movie_info_top draw_class">
+            <view data-type="text" data-text="{{ movieInfo.movieName }}" class="font_weight_700 font_size_32 margin_bottom_10 draw_class">{{ movieInfo.movieName }}</view>
+            <view class="margin_bottom_20 draw_class">
+              <text data-type="text" data-text="{{ movieInfo.subMovieName }}" class="margin_right_10 draw_class">{{ movieInfo.subMovieName }}</text>
+              <text data-type="text" data-text="{{ movieInfo.memberCount + movieInfo.memberCount !== '' ? '张' : '' }}" class="draw_class">{{ movieInfo.memberCount }}{{ movieInfo.memberCount !== "" ? '张' : "" }}</text>
             </view>
-            <view class="margin_bottom_10 font_size_23 color_999">
+            <view data-type="text" data-text="{{ movieInfo.playDate }}" class="margin_bottom_10 font_size_23 color_999 draw_class">
               {{ movieInfo.playDate }}
             </view>
-            <view class="font_size_25">
-              <text class="margin_right_10">{{ movieInfo.playRoom }}{{ movieInfo.playRoom !== "" ? '号厅' : "" }}</text>
-              <text>{{ movieInfo.seat }}</text>
+            <view class="font_size_25 draw_class">
+              <text data-type="text" data-text="{{ movieInfo.playRoom + movieInfo.playRoom !== '' ? '号厅' : '' }}" class="margin_right_10 draw_class">{{ movieInfo.playRoom }}{{ movieInfo.playRoom !== "" ? '号厅' : "" }}</text>
+              <text data-type="text" data-text="{{ movieInfo.seat }}" class="draw_class">{{ movieInfo.seat }}</text>
             </view>
           </view>
-          <view class="movie_info_bottom">
-            <view class="font_weight_700 font_size_32 margin_bottom_20">
+          <view class="movie_info_bottom draw_class">
+            <view data-type="text" data-text="THANK YOU FOR WATCHING" class="font_weight_700 font_size_32 margin_bottom_20 draw_class">
               THANK YOU FOR WATCHING
             </view>
-            <view class="font_weight_700">
+            <view data-type="text" data-text="{{ viewingDate + viewingDate ? '观影留念' : '' }}" class="font_weight_700 draw_class">
               {{ viewingDate }} {{ viewingDate ? "观影留念" : "" }}
             </view>
           </view>
@@ -38,6 +38,7 @@
   </view>
   <view class="design_anction">
       <button type="primary" bind:tap="toEdit">编辑票根</button>
-      <button type="warn">下载票根</button>
-    </view>
+      <button type="warn" bind:tap="drawCanvas">下载票根</button>
+  </view>
+<canvas canvas-id="canvas" class="canvas" style="height:{{height +'px'}}; width: {{width +'px'}};"></canvas>
 </view>

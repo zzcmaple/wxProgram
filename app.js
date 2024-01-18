@@ -6,7 +6,7 @@ App({
     baseSelectTextColor: "	#B452CD",
     baseBgColor: "#FFAEB9",
     movieInfo: {
-      movieName: wx.getAppBaseInfo().SDKVersion,
+      movieName: "",
       subMovieName: "",
       cinemaName: "",
       memberCount: "",

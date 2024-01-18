@@ -53,6 +53,7 @@
   top: 0;
   width: 100%;
   min-height: 100rpx;
+  font-size: 25rpx;
   background-color: #411c1b;
 }
 .design_info_container {
@@ -99,4 +100,10 @@
 
 .text_center {
   text-align: center;
+}
+
+.canvas {
+  position: fixed;
+  top: -9999999rpx;
+  background: #fff;
 }

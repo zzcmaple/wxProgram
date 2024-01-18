@@ -1,19 +1,22 @@
 // pages/editDesign/editDesign.js
 const moment = require('moment')
+import Toast from '@vant/weapp/toast/toast';
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    movieName: "",
-    subMovieName: "",
-    cinemaName: "",
-    memberCount: "",
-    playRoom: "",
-    seat: "",
-    playDate: "",
-    remark: "",
-    fileList: [],
+    movieInfo: {
+      movieName: "",
+      subMovieName: "",
+      cinemaName: "",
+      memberCount: "",
+      playRoom: "",
+      seat: "",
+      playDate: "",
+      remark: "",
+      fileList: [],
+    },
     currentDate: new Date().getTime(),
     datePopupShow: false
   },
@@ -29,7 +32,7 @@ Page({
   },
   confirmDate (e) {
     this.setData({
-      playDate: moment(e.detail).format('YYYY-MM-DD HH:mm:ss')
+      "movieInfo.playDate": moment(e.detail).format('YYYY-MM-DD HH:mm:ss')
     })
     this.closeDatePopup();
   },
@@ -40,33 +43,40 @@ Page({
       wx.showToast({ title: '请选择图片', icon: 'none' });
     } else {
       const uploadTasks = file.map((fileItem, index) => this.uploadFilePromise(`my-photo${new Date().getTime() + index}.png`, fileItem));
+      
       try {
+        Toast.loading({
+          message: '加载中...',
+          forbidClick: true,
+          duration: 0
+        });
         const res = await Promise.all(uploadTasks);
-        console.log(res)
         wx.showToast({ title: '上传成功', icon: 'none' });
-        const newFileList = res.map(item => ({ url: item.fileID }));
-        const fileList = [...this.data.fileList, ...newFileList]
-        console.log(fileList)
-        this.setData({fileList: fileList });
+        console.log(res)
+        const newFileList = res.map(item => ({ url: item.tempFileURL }));
+        const fileList = [...this.data.movieInfo.fileList, ...newFileList]
+        
+        this.setData({"movieInfo.fileList": fileList });
       } catch(error) {
         wx.showToast({ title: '上传失败', icon: 'none' });
-        console.log(error);
+      } finally {
+        Toast.clear()
       }
     }
   },
-  uploadFilePromise(fileName, chooseResult) {
-    return wx.cloud.uploadFile({
+  async uploadFilePromise(fileName, chooseResult) {
+    const file = await wx.cloud.uploadFile({
       cloudPath: fileName,
       filePath: chooseResult.url
-    });
+    })
+    
+    const res = await wx.cloud.getTempFileURL({
+      fileList: [file.fileID]
+    })
+    return res.fileList[0]
   },
   saveMovieInfo () {
-    const movieInfo = getApp().globalData.movieInfo
-    for (const key in movieInfo) {
-      movieInfo[key] = this.data[key]
-    }
-    getApp().globalData.movieInfo = movieInfo
-    console.log(this.data)
+    getApp().globalData.movieInfo = this.data.movieInfo
     wx.switchTab({
       url: '/pages/design/design',
       success () {
@@ -77,22 +87,26 @@ Page({
     })
   },
   onChange (e) {
-    console.log(e)
+    const field = e.currentTarget.dataset.name
     this.setData({
-      [e.currentTarget.dataset.name]: e.detail
+      [field]: e.detail
     })
   },
   deleteImage (e) {
-    const fileList = this.data.fileList.filter((item, index) => index !== e.detail.index)
+    const fileList = this.data.movieInfo.fileList.filter((item, index) => index !== e.detail.index)
     this.setData({
-      fileList
+      "movieInfo.fileList": fileList
     })
   },
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad(options) {
-    console.log(options)
+    if (!options.movieInfo) return
+    const movieInfo = JSON.parse(options.movieInfo)
+    this.setData({
+      movieInfo
+    })
   },
 
   /**

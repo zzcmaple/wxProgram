@@ -2,56 +2,56 @@
 <view class="container">
   <van-cell-group>
     <van-field
-      model:value="{{ movieName }}"
+      value="{{ movieInfo.movieName }}"
       label="电影名"
       placeholder="请输入电影名称"
-      data-name="movieName"
+      data-name="movieInfo.movieName"
       bind:input="onChange"
     />
     <van-field
-      model:value="{{ subMovieName }}"
-      label="电影副标题"
-      data-name="subMovieName"
-      placeholder="没有可以不填"
+      value="{{ movieInfo.subMovieName }}"
+      label="描述"
+      data-name="movieInfo.subMovieName"
+      placeholder="例：国语2D"
       bind:input="onChange"
     />
     <van-field
-      model:value="{{ cinemaName }}"
+      value="{{ movieInfo.cinemaName }}"
       label="影院名称"
       placeholder="观影的影院名称"
-      data-name="cinemaName"
+      data-name="movieInfo.cinemaName"
       bind:input="onChange"
     />
     <van-field
-      model:value="{{ memberCount }}"
+      value="{{ movieInfo.memberCount }}"
       label="观影人数"
-      type="number"
+      type="digit"
       placeholder="请输入观影人数"
-      data-name="memberCount"
+      data-name="movieInfo.memberCount"
       bind:input="onChange"
     />
     <van-field
-      model:value="{{ playRoom }}"
+      value="{{ movieInfo.playRoom }}"
       label="播放厅"
       placeholder="例：3号厅"
-      type="number"
-      data-name="playRoom"
+      type="digit"
+      data-name="movieInfo.playRoom"
       bind:input="onChange"
     />
     <van-field
-      model:value="{{ seat }}"
+      model:value="{{ movieInfo.seat }}"
       label="座位"
       placeholder="例：7排5座"
-      data-name="seat"
+      data-name="movieInfo.seat"
       bind:input="onChange"
     />
-    <van-cell title-class="field_lable_color" value-class="field_text_color" title="观影时间" value="{{ playDate }}" bind:click="showDatePopup" clickable="{{true}}"></van-cell>
+    <van-cell title-class="field_lable_color" value-class="field_text_color" title="观影时间" value="{{ movieInfo.playDate }}" bind:click="showDatePopup" clickable="{{true}}"></van-cell>
     <van-field
-      model:value="{{ remark }}"
+      model:value="{{ movieInfo.remark }}"
       label="备注"
       autosize
       type="textarea"
-      data-name="remark"
+      data-name="movieInfo.remark"
       bind:input="onChange"
     />
 
@@ -61,7 +61,7 @@
       label="电影海报"
     >
       <div slot="input">
-        <van-uploader image-fit="aspectFill" bind:after-read="uploadToCloud" multiple file-list="{{ fileList }}" bind:delete="deleteImage" />
+        <van-uploader image-fit="aspectFill" bind:after-read="uploadToCloud" multiple file-list="{{ movieInfo.fileList }}" bind:delete="deleteImage" />
       </div>
     </van-field> 
     <van-popup show="{{ datePopupShow }}" position="bottom">
@@ -75,4 +75,5 @@
     
   </van-cell-group>
   <button bind:tap="saveMovieInfo">保存</button>
+  <van-toast id="van-toast" />
 </view>
