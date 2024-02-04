@@ -9,6 +9,41 @@
       bind:input="onChange"
     />
     <van-field
+      value="{{ movieInfo.movieNameEn }}"
+      label="电影英文名"
+      placeholder="请输入电影英文名"
+      data-name="movieInfo.movieNameEn"
+      bind:input="onChange"
+    />
+    <van-field
+      value="{{ movieInfo.movieType }}"
+      label="电影类型"
+      placeholder="请输入电影类型"
+      data-name="movieInfo.movieType"
+      bind:input="onChange"
+    />
+    <van-field
+      value="{{ movieInfo.director }}"
+      label="电影导演"
+      placeholder="请输入电影导演"
+      data-name="movieInfo.director"
+      bind:input="onChange"
+    />
+    <van-field
+      value="{{ movieInfo.directorNationality }}"
+      label="导演国籍"
+      placeholder="请输入导演国籍"
+      data-name="movieInfo.directorNationality"
+      bind:input="onChange"
+    />
+    <van-field
+      value="{{ movieInfo.movieDuration }}"
+      label="电影时长"
+      placeholder="请输入电影时长，分钟单位"
+      data-name="movieInfo.movieDuration"
+      bind:input="onChange"
+    />
+    <van-field
       value="{{ movieInfo.subMovieName }}"
       label="描述"
       data-name="movieInfo.subMovieName"
@@ -45,7 +80,8 @@
       data-name="movieInfo.seat"
       bind:input="onChange"
     />
-    <van-cell title-class="field_lable_color" value-class="field_text_color" title="观影时间" value="{{ movieInfo.playDate }}" bind:click="showDatePopup" clickable="{{true}}"></van-cell>
+    <van-cell title-class="field_lable_color" value-class="field_text_color" title="观影时间" value="{{ movieInfo.playDate }}" bind:click="showDatePopup" data-name="movieInfo.playDate" clickable="{{true}}"></van-cell>
+    <van-cell title-class="field_lable_color" value-class="field_text_color" title="上映时间" value="{{ movieInfo.movieStartDate }}" bind:click="showDatePopup" data-name="movieInfo.movieStartDate" clickable="{{true}}"></van-cell>
     <van-field
       model:value="{{ movieInfo.remark }}"
       label="备注"

@@ -6,23 +6,15 @@ Page({
    * 页面的初始数据
    */
   data: {
-    movieInfo: {
-      movieName: "",
-      subMovieName: "",
-      cinemaName: "",
-      memberCount: "",
-      playRoom: "",
-      seat: "",
-      playDate: "",
-      remark: "",
-      fileList: [],
-    },
+    movieInfo: {},
     currentDate: new Date().getTime(),
-    datePopupShow: false
+    datePopupShow: false,
+    selectTimeType: ""
   },
-  showDatePopup () {
+  showDatePopup (e) {
     this.setData({
-      datePopupShow: true
+      datePopupShow: true,
+      selectTimeType: e.currentTarget.dataset.name
     })
   },
   closeDatePopup () {
@@ -31,8 +23,10 @@ Page({
     })
   },
   confirmDate (e) {
+    const formatType = this.data.selectTimeType === 'movieInfo.movieStartDate' ? 'YYYY-MM-DD' : 'YYYY-MM-DD HH:mm'
+    console.log(e)
     this.setData({
-      "movieInfo.playDate": moment(e.detail).format('YYYY-MM-DD HH:mm:ss')
+      [this.data.selectTimeType]: moment(e.detail).format(formatType)
     })
     this.closeDatePopup();
   },

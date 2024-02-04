@@ -4,7 +4,7 @@ view, text {
 }
 
 .font_weight_700 {
-  font-weight: 700;
+  font-weight: bold;
 }
 
 .font_size_32 {
@@ -33,4 +33,20 @@ view, text {
 
 .color_999 {
   color: #999999
+}
+
+.margin_left_20 {
+  margin-left: 20rpx;
+}
+
+.display_flex {
+  display: flex;
+}
+
+.margin_bottom_50 {
+  margin-bottom: 50rpx;
+}
+
+.margin_bottom_30 {
+  margin-bottom: 30rpx;
 }

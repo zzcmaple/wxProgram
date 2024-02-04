@@ -3,42 +3,63 @@
   <view class="design_center">
     <view class="design_canvas draw_class">
       <view class="design_img draw_class">
-        <image data-type="image" data-mode="aspectFill" data-url="{{ movieInfo.fileList.length ? movieInfo.fileList[0].url : '/images/default.jpg' }}" class="draw_class" src="{{ movieInfo.fileList.length ? movieInfo.fileList[0].url : '/images/default.jpg' }}" mode='aspectFill'/>
+        <image data-type="image"  data-url="{{ movieInfo.fileList.length ? movieInfo.fileList[0].url : '/images/default.jpg' }}" class="draw_class" src="{{ movieInfo.fileList.length ? movieInfo.fileList[0].url : '/images/default.jpg' }}"  />
       </view>
-      <view class="design_info draw_class">
-        <view data-type="text" data-text="{{ movieInfo.cinemaName }}" class="design_info_title draw_class">
-          {{ movieInfo.cinemaName }}
-        </view>
+      <view class="design_info draw_class" data-type="background-image">
         <view class="design_info_container draw_class">
           <view class="movie_info_top draw_class">
-            <view data-type="text" data-text="{{ movieInfo.movieName }}" class="font_weight_700 font_size_32 margin_bottom_10 draw_class">{{ movieInfo.movieName }}</view>
-            <view class="margin_bottom_20 draw_class">
+            <view class="font_size_25 margin_bottom_30 draw_class display_flex">
+              <view class="draw_class">
+                <view data-type="text" data-text="{{ movieInfo.movieName }}" class="draw_class font_size_32 font_weight_700">{{ movieInfo.movieName }}</view>
+                <view data-type="text" data-text="{{ movieInfo.movieNameEn }}" class="draw_class">{{ movieInfo.movieNameEn }}</view>
+              </view>
+            </view>
+            <view class="margin_bottom_10 draw_class">
+              <text data-type="text" data-text="[{{ movieInfo.directorNationality }}]" class="draw_class">[{{movieInfo.directorNationality}}]</text>
+              <text data-type="text" data-text="{{ movieInfo.director }}" class="draw_class margin_right_10">{{movieInfo.director}}</text>
+              <text data-type="text" data-text="{{ movieInfo.movieType }}" class="draw_class margin_right_10">{{movieInfo.movieType}}</text>
+            </view>
+            <view class="margin_bottom_10 draw_class">
               <text data-type="text" data-text="{{ movieInfo.subMovieName }}" class="margin_right_10 draw_class">{{ movieInfo.subMovieName }}</text>
-              <text data-type="text" data-text="{{ movieInfo.memberCount + movieInfo.memberCount !== '' ? '张' : '' }}" class="draw_class">{{ movieInfo.memberCount }}{{ movieInfo.memberCount !== "" ? '张' : "" }}</text>
+              <text data-type="text" data-text="{{ movieInfo.memberCount + (movieInfo.memberCount !== '' ? '张' : '') }}" class="draw_class">{{ movieInfo.memberCount }}{{ movieInfo.memberCount !== "" ? '张' : "" }}</text>
             </view>
-            <view data-type="text" data-text="{{ movieInfo.playDate }}" class="margin_bottom_10 font_size_23 color_999 draw_class">
-              {{ movieInfo.playDate }}
+            <view class="margin_bottom_50 draw_class">
+              <text data-type="text" data-text="{{ movieInfo.movieStartDate + '上映' }}" class="margin_right_10 draw_class">{{ movieInfo.movieStartDate + '上映' }}</text>
+              <text data-type="text" data-text="{{ movieInfo.movieDuration + '分钟' }}" class="draw_class">{{ movieInfo.movieDuration + '分钟' }}</text>
             </view>
-            <view class="font_size_25 draw_class">
-              <text data-type="text" data-text="{{ movieInfo.playRoom + movieInfo.playRoom !== '' ? '号厅' : '' }}" class="margin_right_10 draw_class">{{ movieInfo.playRoom }}{{ movieInfo.playRoom !== "" ? '号厅' : "" }}</text>
-              <text data-type="text" data-text="{{ movieInfo.seat }}" class="draw_class">{{ movieInfo.seat }}</text>
+            <view>
+              <view data-type="text" data-text="{{ '影院：' + movieInfo.cinemaName }}" class="margin_bottom_10 draw_class">
+                影院：{{ movieInfo.cinemaName }}
+              </view>
+              <view data-type="text" data-text="{{ '影厅：' + movieInfo.playRoom + '号厅' }}" class="margin_bottom_10 draw_class">
+                影厅：{{ movieInfo.playRoom }}号厅
+              </view>
+              <view data-type="text" data-text="{{ '座号：' + movieInfo.seat }}" class="margin_bottom_10 draw_class">
+                座号：{{ movieInfo.seat }}
+              </view>
+              <view data-type="text" data-text="{{ '日期：' + movieInfo.playDate }}" class="margin_bottom_10 draw_class">
+                日期：{{ movieInfo.playDate }}
+              </view>
             </view>
           </view>
           <view class="movie_info_bottom draw_class">
-            <view data-type="text" data-text="THANK YOU FOR WATCHING" class="font_weight_700 font_size_32 margin_bottom_20 draw_class">
+            <view data-type="text" data-text="{{ movieInfo.remark }}" class="font_weight_700 font_size_32 margin_bottom_20 draw_class">
+              {{ movieInfo.remark }}
+            </view>
+            <!-- <view data-type="text" data-text="THANK YOU FOR WATCHING" class="font_weight_700 font_size_32 margin_bottom_20 draw_class">
               THANK YOU FOR WATCHING
             </view>
-            <view data-type="text" data-text="{{ viewingDate + viewingDate ? '观影留念' : '' }}" class="font_weight_700 draw_class">
+            <view data-type="text" data-text="{{ viewingDate + (viewingDate ? '观影留念' : '') }}" class="font_weight_700 draw_class">
               {{ viewingDate }} {{ viewingDate ? "观影留念" : "" }}
-            </view>
+            </view> -->
           </view>
         </view>
       </view>
     </view>
   </view>
   <view class="design_anction">
-      <button type="primary" bind:tap="toEdit">编辑票根</button>
-      <button type="warn" bind:tap="drawCanvas">下载票根</button>
+    <button type="primary" bind:tap="toEdit">编辑票根</button>
+    <button type="warn" bind:tap="drawCanvas">下载票根</button>
   </view>
-<canvas canvas-id="canvas" class="canvas" style="height:{{height +'px'}}; width: {{width +'px'}};"></canvas>
+  <canvas canvas-id="canvas" class="canvas" style="height:{{height +'px'}}; width: {{width +'px'}};"></canvas>
 </view>

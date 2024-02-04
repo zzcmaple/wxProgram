@@ -9,17 +9,7 @@ Page({
   data: {
     width: 0,
     height: 0,
-    movieInfo: {
-      movieName: "",
-      subMovieName: "",
-      cinemaName: "",
-      memberCount: "",
-      playRoom: "",
-      seat: "",
-      playDate: "",
-      remark: "",
-      fileList: []
-    },
+    movieInfo: {},
     viewingDate: "",
     url: ""
   },
@@ -36,6 +26,7 @@ Page({
     const query = wx.createSelectorQuery().in(this);
     query.select('.design_center').fields({ // 选择需要生成canvas的范围
         size: true,
+        dataset: true,
         scrollOffset: true
     }, data => {
         let width = data.width;
@@ -59,7 +50,7 @@ Page({
       obj: that, // 传入当前组件的this
       width: that.data.width,
       height: that.data.height,
-      background: '#ffffff', // 生成图片的背景色
+      background: 'transparent',
       progress(percent) { // 进度
         // console.log(percent);
       },
@@ -86,7 +77,7 @@ Page({
         }]
     }
     // 绘制canvas
-    console.log(data, this)
+
     drawMyImage.draw(data, this)
   },
   savePoster() {
@@ -140,10 +131,8 @@ Page({
    */
   onLoad(options) {
     const movieInfo = getApp().globalData.movieInfo
-    console.log(movieInfo)
     this.setData({
-      movieInfo,
-      viewingDate:  movieInfo.playDate ? moment(movieInfo.playDate).format('YYYY/MM/DD') : ""
+      movieInfo
     })
   },
 

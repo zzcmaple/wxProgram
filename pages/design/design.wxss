@@ -7,21 +7,20 @@
   padding-top: 30rpx;
   background-color: rgba(0, 0, 0, 0.1);
   font-size: 22rpx;
-  --width: 550rpx;
+  --width: 600rpx;
 }
 
 .design_center {
   width: var(--width);
 }
-
 .design_canvas {
-  
+  height: 100%;
 }
-
 .design_img {
   width: 100%;
-  height: calc(var(--width) * 1.3);
+  height: calc(var(--width) * (1728 / 1152));
   overflow: hidden;
+  border-radius: 10rpx 10rpx 0 0;
 }
 
 .design_img image {
@@ -45,34 +44,39 @@
 
 .design_info {
   position: relative;
-  padding: 20rpx 20rpx;
-  background-image: linear-gradient(to bottom,#542624 0%, #8a6c6c 50%, #cbbdbd 100%);
+  padding: 0 20rpx;
+  /* background-image: linear-gradient(to bottom,#542624 0%, #8a6c6c 50%, #cbbdbd 100%); */
+  /* background-image: url('https://cdn.deshang-inc.com/product/20240204/06ab9a124e480cc0258b69faa0009a71.png'); */
+
+  background-image: url('https://cdn.deshang-inc.com/product/20240204/57b38a51936193ee0a928d652c6d2771.png');
+  background-position: 100% 0px;
+  background-size: 100% 100%, 50% 50%, 50% 50%, 100% 30%;
+  background-repeat: no-repeat;
 }
 .design_info_title {
+  box-sizing: content-box;
   position: relative;
   top: 0;
-  width: 100%;
-  min-height: 100rpx;
+  width: calc(100% - 40rpx);
+  height: 50rpx;
+  padding: 20rpx 20rpx 30rpx;
+  color: #b1a09d;
   font-size: 25rpx;
-  background-color: #411c1b;
+  word-wrap: break-word;
+  /* background-color: #411c1b; */
+  background-color: #fff;
 }
+
 .design_info_container {
-  padding: 40rpx 25rpx 20rpx;
+  padding: 10rpx 15rpx 20rpx;
   width: 100%;
-  min-height: calc(var(--width) * 0.75);
+  min-height: calc(var(--width) * 0.95);
   position: relative;
-  top: -25rpx;
+  top: 0rpx;
   font-size: 25rpx;
-  background:
-    radial-gradient(ellipse at top, transparent 16px, #FFFFFF 10px) top,
-    radial-gradient(circle at left 70%, transparent 10px, #FFFFFF 10px) left,
-    radial-gradient(circle at right 70%, transparent 10px, #FFFFFF 10px) right,
-    radial-gradient(circle at bottom, #FFFFFF 10px, #FFFFFF 10px) bottom;
-  background-repeat: no-repeat;
-  background-size: 100% 50%, 50% 50%, 50% 50%, 100% 30%;
   border-radius: 10px;
 }
-.design_info_container::after {
+/* .design_info_container::after {
   content: '';
   position: absolute;
   top: 60%;
@@ -82,20 +86,15 @@
   background-image: linear-gradient(to right, #999999 0%, #999999 50%, transparent 50%);
   background-size: 11px 2px;
   background-repeat: repeat-x;
-}
-
-.design_info_title {
-  padding: 20rpx 20rpx 30rpx;
-  color: #b1a09d;
-}
+} */
 .movie_info_bottom {
   position: absolute;
-  top: 70%;
+  top: 88%;
   left: 0;
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  text-align: center;
 }
 
 .text_center {
@@ -105,5 +104,5 @@
 .canvas {
   position: fixed;
   top: -9999999rpx;
-  background: #fff;
+  background-color: #fff;
 }
